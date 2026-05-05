@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des commentaires</title>
+</head>
+<body>
+<h1>Liste des commentaires</h1>
+
+<h2>Ajouter un commentaire</h2>
+<form action="/comments/add" method="post">
+    <input type="text" name="text" placeholder="Text"  required /><br/>
+    <input type="text" name="author" placeholder="auteur" /><br/>
+    <button type="submit">Ajouter</button>
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Text</th>
+        <th>Auteur</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="comment : ${comments}">
+        <td th:text="${commment.id}"></td>
+        <td th:text="${comment.text}"></td>
+        <td th:text="${comment.author}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

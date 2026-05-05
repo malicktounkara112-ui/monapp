@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des articles</title>
+</head>
+<body>
+<h1>Liste des articles</h1>
+
+<h2>Ajouter un article</h2>
+<form action="/articles/add" method="post">
+    <input type="text" name="title" placeholder="Titre"  required /><br/>
+    <input type="text" name="content" placeholder="Contenu" /><br/>
+    <button type="submit">Ajouter</button>
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Contenu</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="article : ${articles}">
+        <td th:text="${article.id}"></td>
+        <td th:text="${article.title}"></td>
+        <td th:text="${article.content}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
