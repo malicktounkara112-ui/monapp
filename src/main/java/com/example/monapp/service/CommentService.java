@@ -24,4 +24,14 @@ public class CommentService {
     //créer commentaire
     public Comment createComment(Comment comment){return commentRepository.save(comment);}
 
+    // Modifier un commentaire
+    public Comment updateComment(Long id, Comment comment) {
+        comment.setId(id);
+        return commentRepository.save(comment);
+    }
+
+    // Supprimer un commentaire
+    public void deleteComment(Long id) {
+        commentRepository.deleteById(id);
+    }
 }

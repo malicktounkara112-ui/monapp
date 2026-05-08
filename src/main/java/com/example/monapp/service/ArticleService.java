@@ -25,4 +25,15 @@ public class ArticleService {
     // créer Article
     public Article createArticle(Article article){return articleRepository.save(article);}
 
+    // Modifier un article
+    public Article updateArticle(Long id, Article article) {
+        article.setId(id);
+        return articleRepository.save(article);
+    }
+
+    // Supprimer un article
+    public void deleteArticle(Long id) {
+        articleRepository.deleteById(id);
+    }
+
 }

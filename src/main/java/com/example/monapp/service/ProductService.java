@@ -31,4 +31,15 @@ public class ProductService {
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
+
+    // Modifier un produit
+    public Product updateProduct(Long id, Product product) {
+        product.setId(id);
+        return productRepository.save(product);
+    }
+
+    // Supprimer un produit
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
+    }
 }

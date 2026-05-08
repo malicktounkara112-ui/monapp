@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail d'un commentaire</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<h1>Détail de commentaire</h1>
+<p><strong>ID :</strong> <span th:text="${comment.id}"></span></p>
+<p><strong>Text :</strong> <span th:text="${comment.text}"></span></p>
+<p><strong>Auteur :</strong> <span th:text="${comment.author}"></span></p>
+<a href="/comments" class="btn btn-secondary mt-3">Retour à la liste</a>
+</body>
+</html>
