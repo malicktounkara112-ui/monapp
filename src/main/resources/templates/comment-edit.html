@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>La modification d'un commentaire</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+<h1>Modifier le commentaire</h1>
+<form th:action="@{/comments/edit/{id}(id=${comment.id})}" method="post">
+    <input type="text" name="text" th:value="${comment.text}" /><br/>
+    <input type="text" name="author" th:value="${comment.author}" /><br/>
+    <button type="submit">Enregistrer</button>
+</form>
+<a href="/comments" class="btn btn-secondary mt-3">Retour à la liste</a>
+
+</body>
+</html>
