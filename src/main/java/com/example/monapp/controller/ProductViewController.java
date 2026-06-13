@@ -1,6 +1,8 @@
 package com.example.monapp.controller;
 
 import com.example.monapp.model.Product;
+import com.example.monapp.service.ArticleService;
+import com.example.monapp.service.CommentService;
 import com.example.monapp.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductViewController {
 
     private final ProductService productService;
+    private final ArticleService articleService;
+    private final CommentService commentService;
 
-    public ProductViewController(ProductService productService) {
+    public ProductViewController(ProductService productService,
+                                 ArticleService articleService,
+                                 CommentService commentService) {
         this.productService = productService;
+        this.articleService = articleService;
+        this.commentService = commentService;
     }
-
     @GetMapping("/products")
     public String listProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
@@ -61,5 +68,16 @@ public class ProductViewController {
     public String deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return "redirect:/products";
+    }
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("totalProducts", productService.getAllProducts().size());
+        model.addAttribute("totalArticles", articleService.getAllArticles().size());
+        model.addAttribute("totalComments", commentService.getAllComments().size());
+        return "index";
+    }
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }
