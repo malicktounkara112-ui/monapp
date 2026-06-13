@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - MonApp</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        .login-card {
+            max-width: 400px;
+            margin: 100px auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .login-header {
+            background-color: #212529;
+            color: white;
+            border-radius: 12px 12px 0 0;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="login-card">
+    <div class="login-header">
+        <h2>MonApp</h2>
+        <p class="mb-0">Veuillez vous connecter</p>
+    </div>
+    <div class="card-body p-4 bg-white rounded-bottom">
+        <div th:if="${param.error}" class="alert alert-danger">
+            Nom d'utilisateur ou mot de passe incorrect.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            Vous avez été déconnecté.
+        </div>
+        <form method="post" action="/login">
+            <div class="mb-3">
+                <label class="form-label">Nom d'utilisateur</label>
+                <input type="text" name="username" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mot de passe</label>
+                <input type="password" name="password" class="form-control" required/>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Se connecter</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
