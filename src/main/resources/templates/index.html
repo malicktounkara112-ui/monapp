@@ -4,39 +4,53 @@
     <meta charset="UTF-8">
     <title>Dashboard - MonApp</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body { background-color: #1a1a2e; color: white; }
+        .navbar { background-color: #16213e !important; }
+        .card-produits {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none; border-radius: 12px; color: white;
+        }
+        .card-articles {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border: none; border-radius: 12px; color: white;
+        }
+        .card-commentaires {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border: none; border-radius: 12px; color: white;
+        }
+        .stat-number { font-size: 3rem; font-weight: bold; }
+        .dashboard-title { color: #a0aec0; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+    </style>
 </head>
 <body>
 <div th:replace="~{navbar :: navbar}"></div>
-
-<div class="container">
-    <h1 class="mb-4">Dashboard</h1>
-
-    <div class="row g-4 mb-5">
+<div class="container mt-4">
+    <p class="dashboard-title">Dashboard</p>
+    <h1 class="mb-4">Bienvenue sur MonApp</h1>
+    <div class="row g-4">
         <div class="col-md-4">
-            <div class="card text-white bg-primary shadow">
-                <div class="card-body text-center">
-                    <h2 th:text="${totalProducts}">0</h2>
-                    <p class="card-text">Produits</p>
-                    <a href="/products" class="btn btn-light btn-sm">Voir</a>
-                </div>
+            <div class="card card-produits p-4 shadow">
+                <p class="mb-1">Produits</p>
+                <div class="stat-number" th:text="${totalProducts}">0</div>
+                <p class="mt-2 mb-3">Total des produits enregistrés</p>
+                <a href="/products" class="btn btn-light btn-sm">Voir les produits</a>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card text-white bg-success shadow">
-                <div class="card-body text-center">
-                    <h2 th:text="${totalArticles}">0</h2>
-                    <p class="card-text">Articles</p>
-                    <a href="/articles" class="btn btn-light btn-sm">Voir</a>
-                </div>
+            <div class="card card-articles p-4 shadow">
+                <p class="mb-1">Articles</p>
+                <div class="stat-number" th:text="${totalArticles}">0</div>
+                <p class="mt-2 mb-3">Total des articles publiés</p>
+                <a href="/articles" class="btn btn-light btn-sm">Voir les articles</a>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card text-white bg-warning shadow">
-                <div class="card-body text-center">
-                    <h2 th:text="${totalComments}">0</h2>
-                    <p class="card-text">Commentaires</p>
-                    <a href="/comments" class="btn btn-light btn-sm">Voir</a>
-                </div>
+            <div class="card card-commentaires p-4 shadow">
+                <p class="mb-1">Commentaires</p>
+                <div class="stat-number" th:text="${totalComments}">0</div>
+                <p class="mt-2 mb-3">Total des commentaires reçus</p>
+                <a href="/comments" class="btn btn-light btn-sm">Voir les commentaires</a>
             </div>
         </div>
     </div>
